@@ -6,48 +6,167 @@
   <title>School Management System - Powered by Dynamics 365</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    :root {
+      --primary: #0078D7;
+      --primary-dark: #005A9E;
+      --light-bg: #F4F8FB;
+      --text-dark: #333;
+      --white: #fff;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
+
+    /* Navbar */
+    .navbar {
+      background: var(--primary);
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #d9ecff !important;
+    }
+
+    /* Hero */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('school-bg.jpg') no-repeat center center/cover;
-      color: #fff;
-      padding: 100px 20px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0.5,0)), url('school-bg.jpg') no-repeat center center/cover;
+      color: var(--white);
+      padding: 120px 20px 100px;
       text-align: center;
     }
     .hero h1 { font-size: 3rem; font-weight: bold; }
-    .hero p { font-size: 1.2rem; }
-    .feature-icon {
-      font-size: 40px;
-      color: #0078d7;
+    .hero p { font-size: 1.2rem; margin-bottom: 20px; }
+    .hero .btn {
+      background: var(--primary);
+      border: none;
     }
+    .hero .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Sections */
+    section { padding: 60px 20px; }
+    .section-light { background: var(--light-bg); }
+
+    /* Features */
     .feature-card {
+      background: var(--white);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: all 0.3s ease;
+      padding: 20px;
     }
     .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,120,215,0.25);
     }
-    footer {
-      background: #0078d7;
+    .feature-icon {
+      font-size: 40px;
+      color: var(--primary);
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.2);
+      color: var(--primary-dark);
+    }
+
+    /* Why Choose Us */
+    .icon-box { padding: 10px; transition: transform 0.3s ease; }
+    .icon-circle {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
       color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .icon-box:hover .icon-circle {
+      transform: scale(1.15);
+      box-shadow: 0 6px 15px rgba(0,120,215,0.4);
+    }
+    .icon-box p {
+      font-size: 1rem;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* CTA / Buttons */
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--white);
       padding: 20px;
       text-align: center;
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">VIIIbits Innovations</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#screenshots">Screenshots</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero fade-in">
     <h1>School Management System</h1>
     <p>Powered by Microsoft Dynamics 365 – streamline admissions, academics, finance, and communication.</p>
-    <a href="#contact" class="btn btn-primary btn-lg mt-3">📅 Book a Free Demo</a>
+    <a href="#contact" class="btn btn-primary btn-lg">📅 Book a Free Demo</a>
   </section>
 
   <!-- About -->
-  <section class="container py-5 text-center">
+  <section id="about" class="container text-center fade-in">
     <h2 class="mb-3">About Our Solution</h2>
     <p>
       Our School Management System built on <b>Microsoft Dynamics 365</b> helps schools and colleges digitize 
@@ -56,95 +175,119 @@
   </section>
 
   <!-- Features -->
-  <section class="container py-5">
-    <h2 class="text-center mb-5">Key Features</h2>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">👩‍🎓</div>
-          <h5>Student Management</h5>
-          <p>Centralized student profiles, attendance, exams, and progress reports.</p>
+  <section id="features" class="section-light fade-in">
+    <div class="container">
+      <h2 class="text-center mb-5">Key Features</h2>
+      <div class="row g-4">
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">👩‍🎓</div>
+            <h5>Student Management</h5>
+            <p>Centralized student profiles, attendance, exams, and progress reports.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">👨‍🏫</div>
-          <h5>Faculty Management</h5>
-          <p>Track staff profiles, schedules, leaves, and payroll seamlessly.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">👨‍🏫</div>
+            <h5>Faculty Management</h5>
+            <p>Track staff profiles, schedules, leaves, and payroll seamlessly.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">📚</div>
-          <h5>Course & Curriculum</h5>
-          <p>Flexible course creation and curriculum management in real-time.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">📚</div>
+            <h5>Course & Curriculum</h5>
+            <p>Flexible course creation and curriculum management in real-time.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">🗓</div>
-          <h5>Smart Scheduling</h5>
-          <p>Automated timetables, room allocation, and clash detection.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">🗓</div>
+            <h5>Smart Scheduling</h5>
+            <p>Automated timetables, room allocation, and clash detection.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">💳</div>
-          <h5>Fees & Finance</h5>
-          <p>Transparent fee tracking, payment reminders, and online payments.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">💳</div>
+            <h5>Fees & Finance</h5>
+            <p>Transparent fee tracking, payment reminders, and online payments.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">📢</div>
-          <h5>Communication Hub</h5>
-          <p>SMS, email & WhatsApp integration with parents and staff.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">📢</div>
+            <h5>Communication Hub</h5>
+            <p>SMS, email & WhatsApp integration with parents and staff.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">📊</div>
-          <h5>Analytics & Reports</h5>
-          <p>Performance dashboards and insights powered by Power BI.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">📊</div>
+            <h5>Analytics & Reports</h5>
+            <p>Performance dashboards and insights powered by Power BI.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card p-3 text-center feature-card">
-          <div class="feature-icon">🔒</div>
-          <h5>Secure & Compliant</h5>
-          <p>Role-based access and Microsoft-grade cloud security.</p>
+        <div class="col-md-3 fade-in">
+          <div class="feature-card text-center">
+            <div class="feature-icon">🔒</div>
+            <h5>Secure & Compliant</h5>
+            <p>Role-based access and Microsoft-grade cloud security.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Screenshots -->
-  <section class="container py-5 text-center">
+  <section id="screenshots" class="container text-center fade-in">
     <h2 class="mb-4">Screenshots</h2>
     <p>Take a look at how our solution works inside Dynamics 365.</p>
     <div class="row g-3">
-      <div class="col-md-4"><img src="images/attendance.jpg" class="img-fluid rounded shadow"></div>
-      <div class="col-md-4"><img src="images/admission.jpg" class="img-fluid rounded shadow"></div>
-      <div class="col-md-4"><img src="images/payment.jpg" class="img-fluid rounded shadow"></div>
+      <div class="col-md-4"><img src="images/attendance.jpg" class="img-fluid rounded shadow fade-in"></div>
+      <div class="col-md-4"><img src="images/admission.jpg" class="img-fluid rounded shadow fade-in"></div>
+      <div class="col-md-4"><img src="images/payment.jpg" class="img-fluid rounded shadow fade-in"></div>
     </div>
   </section>
 
   <!-- Why Choose Us -->
-  <section class="container py-5">
-    <h2 class="text-center mb-4">Why Choose Us?</h2>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">✅ Built on Microsoft Dynamics 365 – enterprise-grade platform</li>
-      <li class="list-group-item">✅ Scalable for schools, colleges, and universities</li>
-      <li class="list-group-item">✅ Affordable and customizable implementation</li>
-      <li class="list-group-item">✅ Secure cloud with 24/7 support</li>
-    </ul>
+  <section id="why" class="section-light fade-in">
+    <div class="container">
+      <h2 class="text-center mb-5">Why Choose Us?</h2>
+      <div class="row text-center g-4">
+        <div class="col-md-3">
+          <div class="icon-box fade-in">
+            <div class="icon-circle">✔</div>
+            <p>Built on Microsoft Dynamics 365 – enterprise-grade platform</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="icon-box fade-in">
+            <div class="icon-circle">✔</div>
+            <p>Scalable for schools, colleges, and universities</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="icon-box fade-in">
+            <div class="icon-circle">✔</div>
+            <p>Affordable and customizable implementation</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="icon-box fade-in">
+            <div class="icon-circle">✔</div>
+            <p>Secure cloud with 24/7 support</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="container py-5 text-center">
+  <section id="contact" class="container text-center fade-in">
     <h2 class="mb-3">Get Started Today</h2>
     <p>Digitize your school with Dynamics 365. Book a demo with us now.</p>
-    <a href="mailto:info@viiibits.com" class="btn btn-success btn-lg">📩 Contact Sales</a>
+    <a href="mailto:info@viiibits.com" class="btn btn-primary btn-lg">📩 Contact Sales</a>
   </section>
 
   <!-- Footer -->
@@ -152,5 +295,26 @@
     <p>&copy; 2025 VIIIbits Innovations | Powered by Dynamics 365</p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOptions = { threshold: 0.2 };
+
+      const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, appearOptions);
+
+      faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+      });
+    });
+  </script>
 </body>
 </html>
